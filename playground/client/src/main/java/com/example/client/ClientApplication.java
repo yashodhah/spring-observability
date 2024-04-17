@@ -14,7 +14,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.support.RestClientAdapter;
+import org.springframework.web.client.support.RestTemplateAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
+import org.springframework.web.util.DefaultUriBuilderFactory;
 
 import java.util.List;
 
@@ -27,15 +29,21 @@ public class ClientApplication {
     }
 
     @Bean
-    IExternalHttpService externalHttpService() {
-        RestClient restClient = RestClient.create("http://localhost:8080");
-        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
-        return factory.createClient(IExternalHttpService.class);
+    RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
     }
 
     @Bean
-    RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    IExternalHttpService externalHttpService(RestTemplate restTemplate) {
+//        RestClient restClient = RestClient.builder().baseUrl("http://localhost:8080").build();
+//        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
+//        return factory.createClient(IExternalHttpService.class);
+
+        restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:8080"));
+        RestTemplateAdapter adapter = RestTemplateAdapter.create(restTemplate);
+        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+
+        return factory.createClient(IExternalHttpService.class);
     }
 
 //    @Bean
