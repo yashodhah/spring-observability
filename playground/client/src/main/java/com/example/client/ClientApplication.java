@@ -1,24 +1,18 @@
 package com.example.client;
 
-import com.example.client.model.Post;
 import com.example.client.services.IExternalHttpService;
-import com.sun.source.tree.TryTree;
-import io.micrometer.observation.annotation.Observed;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.client.support.RestTemplateAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 import org.springframework.web.util.DefaultUriBuilderFactory;
-
-import java.util.List;
 
 @SpringBootApplication
 public class ClientApplication {
