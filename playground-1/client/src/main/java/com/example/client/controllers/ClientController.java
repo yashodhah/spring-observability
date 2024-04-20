@@ -1,7 +1,6 @@
 package com.example.client.controllers;
 
 import com.example.client.model.Post;
-import com.example.client.services.ExternalApacheHttpService;
 import com.example.client.services.IExternalHttpService;
 import com.example.client.services.ProcessingService;
 import org.slf4j.Logger;
@@ -22,9 +21,6 @@ public class ClientController {
     IExternalHttpService externalHttpService;
 
     @Autowired
-    ExternalApacheHttpService externalApacheHttpService;
-
-    @Autowired
     ProcessingService processingService;
 
 //    public ClientController(IExternalHttpService externalHttpService) {
@@ -36,13 +32,6 @@ public class ClientController {
         logger.info("External post service has been called");
         List<Post> postLists =  externalHttpService.findAll();
         return processingService.processWithObservation(postLists);
-    }
-
-    @GetMapping("/v1/posts")
-    public String findAllV1() {
-        logger.info("External post service has been called");
-        String postLists =  externalApacheHttpService.instrumentedFindAll();
-        return postLists;
     }
 
 //    @GetMapping("/posts/{id}")
