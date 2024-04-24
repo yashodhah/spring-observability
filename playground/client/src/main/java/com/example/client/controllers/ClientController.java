@@ -40,7 +40,7 @@ public class ClientController {
 
     @GetMapping("/v1/posts")
     public String findAllV1() {
-        logger.info("External post service has been called");
+        logger.info("External post service has been called from apache client");
         String postLists =  externalApacheHttpService.instrumentedFindAll();
         return postLists;
     }

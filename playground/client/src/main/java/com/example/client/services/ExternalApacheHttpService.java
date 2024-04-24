@@ -2,6 +2,7 @@ package com.example.client.services;
 
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.observation.annotation.Observed;
 import io.micrometer.observation.transport.RequestReplySenderContext;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpUriRequestBase;
@@ -65,6 +66,7 @@ public class ExternalApacheHttpService {
 
     }
 
+    @Observed
     public String findAll() {
         final HttpGet request = new HttpGet("http://localhost:8080/api/posts");
         try {

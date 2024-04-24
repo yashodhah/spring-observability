@@ -50,8 +50,3 @@ services:
                 kafka-topics --create --topic test2 --partitions 2 --replication-factor 1 --if-not-exists --bootstrap-server kafka0:29092 && \
                 kafka-topics --create --topic test3 --partitions 2 --replication-factor 1 --if-not-exists --bootstrap-server kafka0:29092 
                 '"
-
-  zipkin:
-    image: 'openzipkin/zipkin:latest'
-    ports:
-      - '9411:9411'

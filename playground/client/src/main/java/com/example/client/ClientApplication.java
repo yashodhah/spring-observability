@@ -29,10 +29,7 @@ public class ClientApplication {
 
     @Bean
     IExternalHttpService externalHttpService(RestTemplate restTemplate) {
-//        RestClient restClient = RestClient.builder().baseUrl("http://localhost:8080").build();
-//        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(RestClientAdapter.create(restClient)).build();
-//        return factory.createClient(IExternalHttpService.class);
-
+        // TODO: Check what's wrong with the Rest client, why it has no instrumentation by default
         restTemplate.setUriTemplateHandler(new DefaultUriBuilderFactory("http://localhost:8080"));
         RestTemplateAdapter adapter = RestTemplateAdapter.create(restTemplate);
         HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
