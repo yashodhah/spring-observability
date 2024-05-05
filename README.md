@@ -85,3 +85,7 @@ Baggage
 [Vendors](https://opentelemetry.io/ecosystem/vendors/)
 
 [Observability, Distributed Tracing & the Complex World • Dave McAllister • GOTO 2019](https://www.youtube.com/watch?v=2nTJSsBngao&t=1870s&ab_channel=GOTOConferences)
+
+https://github.com/spring-projects/spring-boot/issues/37278
+
+https://itnext.io/distributed-tracing-with-spring-boot-3-micrometer-vs-opentelemetry-b3593546f61b

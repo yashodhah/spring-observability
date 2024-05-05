@@ -1,19 +1,19 @@
-package com.example.client.observation;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class Config {
-
+//package com.example.client.observation;
+//
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
+//
+//@Configuration
+//public class Config {
+//
+////    @Bean
+////    MeterRegistry meterRegistry() {
+////        return new SimpleMeterRegistry();
+////    }
+//
 //    @Bean
-//    MeterRegistry meterRegistry() {
-//        return new SimpleMeterRegistry();
+//    SimpleObservationHandler simpleObservationHandler() {
+//        return new SimpleObservationHandler();
 //    }
-
-    @Bean
-    SimpleObservationHandler simpleObservationHandler() {
-        return new SimpleObservationHandler();
-    }
-
-}
+//
+//}
